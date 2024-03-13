@@ -1,14 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:train_food_app/constants/constants.dart';
-import 'package:train_food_app/presentation/user/dish_list_page/dish_list_page.dart';
+import 'package:train_food_app/presentation/user/cart/view/cart_page.dart';
+import 'package:train_food_app/presentation/user/cart/widgets/food_tile.dart';
+import 'package:train_food_app/presentation/user/delivery_info_page/view/delivery_info_page.dart';
+import 'package:train_food_app/presentation/user/dish_list_page/view/dish_list_page.dart';
 import 'package:train_food_app/presentation/user/dish_list_page/widget/dish_card.dart';
 import 'package:train_food_app/presentation/user/login_page/view/user_login_page.dart';
+import 'package:train_food_app/presentation/user/splash_screen/view/splash_screen.dart';
 
-import 'package:train_food_app/presentation/user/user_home_screen.dart/user_home_screen.dart';
+import 'package:train_food_app/presentation/user/user_home_screen.dart/view/user_home_screen.dart';
 import 'package:train_food_app/presentation/user/user_signup_page/view/user_signup_page.dart';
+import 'package:train_food_app/presentation/user/user_signup_page/view/user_signup_page1.dart';
+
+import 'presentation/user/user_signup_page/view/user_signup_page2.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
@@ -41,7 +49,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
         );
       },
-      child: UserLoginPage(),
+      child: SplashScreen(),
     );
   }
 }

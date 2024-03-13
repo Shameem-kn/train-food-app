@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TextFieldCustom extends StatefulWidget {
   final TextEditingController controller;
@@ -21,34 +22,42 @@ class _CustomTextFieldState extends State<TextFieldCustom> {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      controller: widget.controller,
-      obscureText: !isVisible,
-      decoration: InputDecoration(
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12.0),
+    return Container(
+      width: 332.w,
+      height: 54.h,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(14),
+      ),
+      child: TextFormField(
+        controller: widget.controller,
+        obscureText: !isVisible,
+        decoration: InputDecoration(
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12.0),
+          ),
+          contentPadding:
+              const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+          hintText: widget.hintText,
+          hintStyle: const TextStyle(
+            fontSize: 14,
+            color: Colors.grey,
+          ),
+          suffixIcon: widget.suffixIcon != null
+              ? GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      isVisible = !isVisible;
+                    });
+                  },
+                  child: isVisible
+                      ? Icon(
+                          widget.suffixIcon,
+                          color: Colors.grey,
+                        )
+                      : const Icon(Icons.visibility_off, color: Colors.grey),
+                )
+              : null,
         ),
-        contentPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-        hintText: widget.hintText,
-        hintStyle: const TextStyle(
-          fontSize: 14,
-          color: Colors.grey,
-        ),
-        suffixIcon: widget.suffixIcon != null
-            ? GestureDetector(
-                onTap: () {
-                  setState(() {
-                    isVisible = !isVisible;
-                  });
-                },
-                child: isVisible
-                    ? Icon(
-                        widget.suffixIcon,
-                        color: Colors.grey,
-                      )
-                    : const Icon(Icons.visibility_off, color: Colors.grey),
-              )
-            : null,
       ),
     );
   }

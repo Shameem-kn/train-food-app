@@ -85,32 +85,32 @@ class _RestaurantPageState extends State<DishListPage> {
                   return DishCard();
                 },
               ),
-              SizedBox(height: 20.h),
-              Padding(
-                padding: const EdgeInsets.all(5.0),
-                child: ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.green, // Background color
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20), // Border radius
-                    ),
-                  ),
-                  child: Container(
-                    width: 150.w,
-                    height: 50.h,
-                    alignment: Alignment.center,
-                    child: const Text(
-                      "Your Order",
-                      style: TextStyle(
-                        color: Colors.white, // Text color
-                        fontWeight: FontWeight.bold, // Text weight
-                        fontSize: 16, // Text size
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+              // SizedBox(height: 20.h),
+              // Padding(
+              //   padding: const EdgeInsets.all(5.0),
+              //   child: ElevatedButton(
+              //     onPressed: () {},
+              //     style: ElevatedButton.styleFrom(
+              //       primary: Colors.green, // Background color
+              //       shape: RoundedRectangleBorder(
+              //         borderRadius: BorderRadius.circular(20), // Border radius
+              //       ),
+              //     ),
+              //     child: Container(
+              //       width: 150.w,
+              //       height: 50.h,
+              //       alignment: Alignment.center,
+              //       child: const Text(
+              //         "Your Order",
+              //         style: TextStyle(
+              //           color: Colors.white, // Text color
+              //           fontWeight: FontWeight.bold, // Text weight
+              //           fontSize: 16, // Text size
+              //         ),
+              //       ),
+              //     ),
+              //   ),
+              // ),
               SizedBox(height: 20.h),
             ],
           ),

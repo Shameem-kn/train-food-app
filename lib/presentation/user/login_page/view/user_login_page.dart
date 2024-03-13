@@ -1,12 +1,18 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:http/http.dart';
 import 'package:train_food_app/global/app_bar_custom.dart';
-import 'package:train_food_app/presentation/user/user_home_screen.dart/user_home_screen.dart';
+import 'package:train_food_app/presentation/user/delivery_info_page/view/delivery_info_page.dart';
+import 'package:train_food_app/presentation/user/user_home_screen.dart/view/user_home_screen.dart';
+import 'package:train_food_app/presentation/user/user_signup_page/view/user_signup_page1.dart';
 
 import '../../../../global/container_custom.dart';
 import '../../../../global/textfield_custom.dart';
 import '../../../../services/http_services.dart';
 import '../../user_signup_page/view/user_signup_page.dart';
+import '../login_page_model/login_page_model.dart';
 
 class UserLoginPage extends StatefulWidget {
   const UserLoginPage({super.key});
@@ -88,33 +94,47 @@ class _LoginPageState extends State<UserLoginPage> {
                         SizedBox(
                           height: 24.h,
                         ),
-                        GestureDetector(
-                          onTap: () {
-                            HttpServices().logIn(_usernameController.text,
-                                _passwordController.text);
-                          },
-                          child: InkWell(
-                            onTap: () {
-                              Navigator.of(context).push(MaterialPageRoute(
+                        InkWell(
+                          onTap: () async {
+                            LoginModel loginData = LoginModel(
+                                username: _usernameController.text,
+                                password: _passwordController.text);
+                            try {
+                              await HttpServices().userLogIn(loginData);
+                              // Handle successful login
+                              Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
                                   builder: (context) =>
-                                      const UserHomeScreen()));
-                            },
-                            child: CustomContainer(
-                                width: 332.w,
-                                height: 54.h,
-                                radius: 14,
-                                color: Colors.green,
-                                child: const Center(
-                                  child: Text(
-                                    "Login",
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold,
-                                    ),
+                                      const UserHomeScreen(), // Navigate to home page after login
+                                ),
+                              );
+                            } on HttpException catch (e) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                    content: Text("HTTP Error: ${e.message}")),
+                              );
+                            } catch (e) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                    content: Text("An error occurred: $e")),
+                              );
+                            }
+                          },
+                          child: CustomContainer(
+                              width: 332.w,
+                              height: 54.h,
+                              radius: 14,
+                              color: Colors.green,
+                              child: const Center(
+                                child: Text(
+                                  "Login",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
                                   ),
-                                )),
-                          ),
+                                ),
+                              )),
                         ),
                         SizedBox(
                           height: 20.h,
@@ -134,7 +154,7 @@ class _LoginPageState extends State<UserLoginPage> {
                               onPressed: () {
                                 Navigator.of(context).push(MaterialPageRoute(
                                     builder: (context) =>
-                                        const UserSignUpPage()));
+                                        const UserSignUpPage1()));
                               },
                               child: const Text(
                                 "Sign Up",

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../global/container_custom.dart';
 import '../../../../global/textfield_custom.dart';
 import 'package:badges/badges.dart' as badges;
 
@@ -74,12 +75,27 @@ class _SignUpPageState extends State<UserSignUpPage> {
                           const SizedBox(
                             width: 10,
                           ),
-                          TextButton(
-                            onPressed: details.onStepContinue,
-                            child: const Text(
-                              "SignUp",
-                              style: TextStyle(color: Colors.green),
-                            ),
+                          InkWell(
+                            onTap: () {
+                              // Navigator.of(context).push(MaterialPageRoute(
+                              //     builder: (context) =>
+                              //         const UserHomeScreen()));
+                            },
+                            child: CustomContainer(
+                                width: 150.w,
+                                height: 40.h,
+                                radius: 14,
+                                color: Colors.green,
+                                child: const Center(
+                                  child: Text(
+                                    "Sign Up",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                )),
                           ),
                         ],
                       )
@@ -211,32 +227,34 @@ class _SignUpPageState extends State<UserSignUpPage> {
           SizedBox(
             height: 20.h,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            // crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const Text(
-                "Already have an account?",
-                style: TextStyle(
-                    // color: Colors.red,
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold),
-              ),
-              TextButton(
-                onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const UserLoginPage()));
-                },
-                child: const Text(
-                  "Log in",
-                  style: TextStyle(
-                      color: Colors.green,
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
-            ],
-          ),
+          (_currentStep == 0)
+              ? Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  // crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const Text(
+                      "Already have an account?",
+                      style: TextStyle(
+                          // color: Colors.red,
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => const UserLoginPage()));
+                      },
+                      child: const Text(
+                        "Log in",
+                        style: TextStyle(
+                            color: Colors.green,
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ],
+                )
+              : SizedBox(),
         ],
       )),
     );

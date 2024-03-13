@@ -5,7 +5,7 @@ import 'package:train_food_app/global/app_bar_custom.dart';
 import 'package:train_food_app/global/display_card.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:train_food_app/global/search_field.dart';
-import 'package:train_food_app/presentation/user/restaurant_list_page/restaurant_list_page.dart';
+import 'package:train_food_app/presentation/user/restaurant_list_page/view/restaurant_list_page.dart';
 
 class UserHomeScreen extends StatefulWidget {
   const UserHomeScreen({super.key});

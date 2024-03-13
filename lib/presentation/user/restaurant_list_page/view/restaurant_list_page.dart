@@ -4,7 +4,7 @@ import 'package:train_food_app/constants/constants.dart';
 import 'package:train_food_app/global/app_bar_custom.dart';
 import 'package:train_food_app/global/display_card.dart';
 import 'package:train_food_app/global/search_field.dart';
-import 'package:train_food_app/presentation/user/dish_list_page/dish_list_page.dart';
+import 'package:train_food_app/presentation/user/dish_list_page/view/dish_list_page.dart';
 import 'package:train_food_app/presentation/user/restaurant_list_page/widgets/restaurant_display_card.dart';
 
 class RestaurantListPage extends StatefulWidget {

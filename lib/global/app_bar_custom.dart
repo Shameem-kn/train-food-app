@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:badges/badges.dart' as badges;
+import 'package:train_food_app/data/delivery_location/delivery_location.dart';
+import 'package:train_food_app/presentation/user/delivery_info_page/view/delivery_info_page.dart';
 
 class AppBarCustom extends StatelessWidget implements PreferredSizeWidget {
   const AppBarCustom({super.key});
@@ -14,12 +16,18 @@ class AppBarCustom extends StatelessWidget implements PreferredSizeWidget {
         padding: const EdgeInsets.only(left: 15),
         child: Row(
           children: [
-            const Text(
-              "Ernakulam",
+            Text(
+              DeliveryLocation.currentLocation,
               style: TextStyle(color: Colors.black),
             ),
             IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => DeliveryInfoPage(),
+                    ),
+                  );
+                },
                 icon: const Icon(
                   Icons.arrow_drop_down,
                   color: Colors.black,
